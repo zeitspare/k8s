@@ -3,7 +3,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: gitlab-arm-pv-claim
 spec:
-  storageClassName: manual
+  storageClassName: gitlab-arm-pv-storage
   accessModes:
     - ReadWriteOnce
   resources:
