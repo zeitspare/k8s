@@ -644,7 +644,7 @@ primary:
     enabled: true
     ## @param primary.persistence.existingClaim Name of an existing PVC to use
     ##
-    existingClaim: "gitlab-arm-pv-claim"
+    existingClaim: "gitlab-arm-psql-pv-claim"
     ## @param primary.persistence.mountPath The path the volume will be mounted at
     ## Note: useful when using custom PostgreSQL images
     ##
@@ -667,7 +667,7 @@ primary:
       - ReadWriteOnce
     ## @param primary.persistence.size PVC Storage Request for PostgreSQL volume
     ##
-    size: 30Gi
+    size: 15Gi
     ## @param primary.persistence.annotations Annotations for the PVC
     ##
     annotations: {}

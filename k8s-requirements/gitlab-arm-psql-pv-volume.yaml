@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: gitlab-arm-psql-pv-volume
+  labels:
+    type: local
+spec:
+  storageClassName: gitlab-arm-psql-pv-storage
+  capacity:
+    storage: 15Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/mnt/data"
