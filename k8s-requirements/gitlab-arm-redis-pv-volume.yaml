@@ -1,0 +1,97 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: gitlab-arm-redis-m-pv-volume
+  labels:
+    type: local
+spec:
+  storageClassName: gitlab-arm-redis-m-pv-storage
+  capacity:
+    storage: 6Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/mnt/data"
+
+########### Enable it after connecting to shared storage ###########      
+#
+#---
+#
+#apiVersion: v1
+#kind: PersistentVolume
+#metadata:
+#  name: gitlab-arm-redis-r-pv-volume0
+#  labels:
+#    type: local
+#spec:
+#  storageClassName: gitlab-arm-redis-r-pv-storage
+#  volumeMode: Filesystem
+#  capacity:
+#    storage: 6Gi
+#  persistentVolumeReclaimPolicy: Delete
+#  accessModes:
+#    - ReadWriteOnce
+#  local:
+#    path: "/mnt/data0"
+#  nodeAffinity:
+#    required:
+#      nodeSelectorTerms:
+#      - matchExpressions:
+#        - key: kubernetes.io/worker-node1
+#          operator: In
+#          values:
+#          - worker-node1
+#
+#---
+#
+#apiVersion: v1
+#kind: PersistentVolume
+#metadata:
+#  name: gitlab-arm-redis-r-pv-volume1
+#  labels:
+#    type: local
+#spec:
+#  storageClassName: gitlab-arm-redis-r-pv-storage
+#  volumeMode: Filesystem
+#  capacity:
+#    storage: 6Gi
+#  persistentVolumeReclaimPolicy: Delete
+#  accessModes:
+#    - ReadWriteOnce
+#  local:
+#    path: "/mnt/data1"
+#  nodeAffinity:
+#    required:
+#      nodeSelectorTerms:
+#      - matchExpressions:
+#        - key: kubernetes.io/worker-node2
+#          operator: In
+#          values:
+#          - worker-node2
+#
+#---
+#
+#apiVersion: v1
+#kind: PersistentVolume
+#metadata:
+#  name: gitlab-arm-redis-r-pv-volume2
+#  labels:
+#    type: local
+#spec:
+#  storageClassName: gitlab-arm-redis-r-pv-storage
+#  volumeMode: Filesystem
+#  capacity:
+#    storage: 6Gi
+#  persistentVolumeReclaimPolicy: Delete
+#  accessModes:
+#    - ReadWriteOnce
+#  local:
+#    path: "/mnt/data2"
+#  nodeAffinity:
+#    required:
+#      nodeSelectorTerms:
+#      - matchExpressions:
+#        - key: kubernetes.io/worker-node3
+#          operator: In
+#          values:
+#          - worker-node3

@@ -1,0 +1,9 @@
+########### Enable it after connecting to shared storage ###########
+#apiVersion: storage.k8s.io/v1
+#kind: StorageClass
+#metadata:
+#  name: gitlab-arm-redis-r-pv-storage
+#provisioner: kubernetes.io/no-provisioner
+#volumeBindingMode: WaitForFirstConsumer
+#  #allowVolumeExpansion: true
+#reclaimPolicy: Delete
