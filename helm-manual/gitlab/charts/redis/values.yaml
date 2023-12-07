@@ -78,7 +78,7 @@ diagnosticMode:
 image:
   registry: docker.io
   repository: bitnami/redis
-  tag: 6.2.7-debian-11-r11
+  tag: 7.2.3
   ## Specify a imagePullPolicy
   ## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
   ## ref: https://kubernetes.io/docs/user-guide/images/#pre-pulling-images
@@ -101,8 +101,8 @@ image:
 ##
 
 ## @param architecture Redis&reg; architecture. Allowed values: `standalone` or `replication`
-##
-architecture: replication
+## 
+architecture: standalone
 ## Redis&reg; Authentication parameters
 ## ref: https://github.com/bitnami/bitnami-docker-redis#setting-the-server-password-on-first-run
 ##
@@ -423,14 +423,14 @@ master:
     ## If set to "-", storageClassName: "", which disables dynamic provisioning
     ## If undefined (the default) or set to null, no storageClassName spec is set, choosing the default provisioner
     ##
-    storageClass: ""
+    storageClass: "gitlab-arm-redis-m-pv-storage"
     ## @param master.persistence.accessModes Persistent Volume access modes
     ##
     accessModes:
       - ReadWriteOnce
     ## @param master.persistence.size Persistent Volume size
     ##
-    size: 8Gi
+    size: 6Gi
     ## @param master.persistence.annotations Additional custom annotations for the PVC
     ##
     annotations: {}
@@ -447,7 +447,7 @@ master:
     ## @param master.persistence.existingClaim Use a existing PVC which must be created manually before bound
     ## NOTE: requires master.persistence.enabled: true
     ##
-    existingClaim: ""
+    existingClaim: "gitlab-arm-redis-m-pv-claim"
   ## Redis&reg; master service parameters
   ##
   service:
@@ -805,14 +805,14 @@ replica:
     ## If set to "-", storageClassName: "", which disables dynamic provisioning
     ## If undefined (the default) or set to null, no storageClassName spec is set, choosing the default provisioner
     ##
-    storageClass: ""
+    storageClass: "gitlab-arm-redis-r-pv-storage"
     ## @param replica.persistence.accessModes Persistent Volume access modes
     ##
     accessModes:
       - ReadWriteOnce
     ## @param replica.persistence.size Persistent Volume size
     ##
-    size: 8Gi
+    size: 6Gi
     ## @param replica.persistence.annotations Additional custom annotations for the PVC
     ##
     annotations: {}
@@ -829,7 +829,7 @@ replica:
     ## @param replica.persistence.existingClaim Use a existing PVC which must be created manually before bound
     ## NOTE: requires replica.persistence.enabled: true
     ##
-    existingClaim: ""
+    existingClaim: "gitlab-arm-redis-r-pv-claim0"
   ## Redis&reg; replicas service parameters
   ##
   service:
