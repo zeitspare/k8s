@@ -1,0 +1,42 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    meta.helm.sh/release-name: operator
+    meta.helm.sh/release-namespace: minio-operator
+  creationTimestamp: "2023-12-21T19:48:37Z"
+  labels:
+    app.kubernetes.io/instance: operator
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: operator
+    app.kubernetes.io/version: v5.0.11
+    helm.sh/chart: operator-5.0.11
+  name: console
+  namespace: minio-operator
+  resourceVersion: "5343604"
+  uid: 43d98d57-28cb-4f43-a1ed-24b94743ca14
+spec:
+  clusterIP: 10.109.225.1
+  clusterIPs:
+    - 10.109.225.1
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+    - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+    - name: http
+      port: 9090
+      protocol: TCP
+      targetPort: 9090
+      nodePort: 30080
+    - name: https
+      port: 9443
+      protocol: TCP
+      targetPort: 9443
+  selector:
+    app.kubernetes.io/instance: operator-console
+    app.kubernetes.io/name: operator
+  sessionAffinity: None
+  type: NodePort
+status:
+  loadBalancer: {}
